@@ -177,10 +177,10 @@ my $dob = <STDIN>;
 	}
 }
 
-print ("Please enter this persons yearly salary \n");
-my $salary = <STDIN>;
-chomp $salary;
-$entry->salary($salary);
+print ("Please enter this persons yearly email \n");
+my $email = <STDIN>;
+chomp $email;
+$entry->email($email);
 
 
 # write new Entry obj to a file specified in Entry Abstraction
@@ -237,7 +237,7 @@ print("Mobile phone              4\n");
 print("Address                   5\n");
 print("Zipcode                   6\n");
 print("DOB                       7\n");
-print("Salary                    8\n");
+print("Email                    8\n");
 
 my @sorted_entries; 
 my $select = <STDIN>;
@@ -250,7 +250,7 @@ $sortby[3]="Mobile Phone";
 $sortby[4]="Address";
 $sortby[5]="Zip code";
 $sortby[6]="DOB";
-$sortby[7]="Salary";
+$sortby[7]="Email";
 my @order = qw(Ascending Descending);
 print("Ascending or Descending\n");
 print("Ascending            1\n");
@@ -289,9 +289,9 @@ if( $select == 1 and $direction == 1){
 }elsif( $select == 7 and $direction == 2 ){
 @sorted_entries = sort { $b->dob cmp $a->dob } @entries;
 }elsif( $select == 8 and $direction == 1){
-@sorted_entries = sort { $a->salary <=> $b->salary } @entries;
+@sorted_entries = sort { $a->email <=> $b->email } @entries;
 }elsif($select == 8 and $direction == 2 ){
-@sorted_entries = sort { $b->salary <=> $a->salary } @entries;
+@sorted_entries = sort { $b->email <=> $a->email } @entries;
 }
 
 print ("Sorting by ", $sortby[$select-1]," in ",$order[$direction-1]," order\n\n");
@@ -306,8 +306,8 @@ Home Phone: @<<<<<<<<<<<<<<<<<<<<<<<	    Mobile Phone: @>>>>>>>>>>>>>>>
       $_->phone,					  $_->mobile
 Address:    @<<<<<<<<<<<<<<<<<<<<<<<	    Zip code:  @>>>>>>>>>>>>>>>>>>
       $_->address,			    	       $_->zipcode
-DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Salary:    @###############.##
-      $_->dob,					       $_->salary
+DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Email:    @<<<<<<<<<<<<<<<<<<<<<<<
+      $_->dob,					       $_->email
         
 .
 write;
@@ -369,7 +369,7 @@ sub load{
 	    }
             $loader->address($mystr);
 	    $loader->dob($fields[4]);
-            $loader->salary($fields[5]);
+            $loader->email($fields[5]);
 
 	    #validate document
             if($names[0] and $names[1] and $fields[1] and $fields[2] and $fields[3]
@@ -406,8 +406,8 @@ Home Phone: @<<<<<<<<<<<<<<<<<<<<<<<	    Mobile Phone: @>>>>>>>>>>>>>>>
       $_->phone,					  $_->mobile
 Address:    @<<<<<<<<<<<<<<<<<<<<<<<	    Zip code:  @>>>>>>>>>>>>>>>>>>
       $_->address,			    	       $_->zipcode
-DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Salary:    @###############.##
-      $_->dob,					       $_->salary
+DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Email:    @<<<<<<<<<<<<<<<<<<<<<<<
+      $_->dob,					       $_->email
         
 .
 write;
@@ -556,7 +556,7 @@ foreach (@entries){
 			}
 		}
 	}elsif( $select == 7 ){
-		if($_->salary eq $match){
+		if($_->email eq $match){
 			$_->showElement();
 			print("Are sure you want to delete this entry?\n");
 			print("Yes                 1\n");
@@ -596,7 +596,7 @@ print("Mobile phone              4\n");
 print("Address                   5\n");
 print("Zipcode                   6\n");
 #print("DOB                       7\n");
-print("Salary                    8\n");
+print("Email                    8\n");
 
 my $select = <STDIN>;
 
@@ -622,7 +622,7 @@ print("Mobile phone              4\n");
 print("Address                   5\n");
 print("Zipcode                   6\n");
 #print("DOB                       7\n");
-print("Salary                    8\n");
+print("Email                    8\n");
 
 my $select = <STDIN>;
 
@@ -641,8 +641,8 @@ Home Phone: @<<<<<<<<<<<<<<<<<<<<<<<	    Mobile Phone: @>>>>>>>>>>>>>>>
       $_->phone,					  $_->mobile
 Address:    @<<<<<<<<<<<<<<<<<<<<<<<	    Zip code:  @>>>>>>>>>>>>>>>>>>
       $_->address,			    	       $_->zipcode
-DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Salary:    @###############.##
-      $_->dob,					       $_->salary
+DOB:	    @<<<<<<<<<<<<<<<<<<<<<<<	    Email:    @<<<<<<<<<<<<<<<<<<<<<<<
+      $_->dob,					       $_->email
         
 .
 write;
@@ -697,7 +697,7 @@ foreach $value (@entries){
 			push(@matches,$value);
 		}
 	}elsif( $select == 7 ){
-		if($value->salary eq $match){
+		if($value->email eq $match){
 			push(@matches,$value);
 		}
 	}
