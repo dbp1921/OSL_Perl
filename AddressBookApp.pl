@@ -1,7 +1,4 @@
- #!/usr/bin/perl
-#Author Michael Vasquez
-#CS 408
-#
+
 use strict;
 use warnings;
 use diagnostics;
